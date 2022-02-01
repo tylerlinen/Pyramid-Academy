@@ -20,28 +20,32 @@ public class Main {
         String name = sc.next();
         System.out.println("Hello " + name + " welcome to the guess a number game!");
 
-        while(true){
-            for (int i = 1; i<=6; i++){
-                System.out.println("Please guess a number between 1 - 20");
-                int guess = sc.nextInt();
-                guesses++;
-                if (guess == ans) {
-                    System.out.println("You got it right!");
-                    System.out.println("it took you "+ guesses + " tries to complete");
+        try {
+            while (true) {
+                for (int i = 1; i <= 6; i++) {
+                    System.out.println("Please guess a number between 1 - 20");
+                    int guess = sc.nextInt();
+                    guesses++;
+                    if (guess == ans) {
+                        System.out.println("You got it right!");
+                        System.out.println("it took you " + guesses + " tries to complete");
+                        break;
+                    } else if (guess < ans) {
+                        System.out.println("Guess too low!");
+                    } else {
+                        System.out.println("Guess too high!");
+                    }
+                }
+                System.out.println("Game Over");
+                guesses = 0;
+                System.out.println("Do you want to play again? yes or no?");
+                play = sc.next();
+                if (!play.equals("yes")) {
                     break;
-                } else if (guess < ans) {
-                    System.out.println("Guess too low!");
-                } else {
-                    System.out.println("Guess too high!");
                 }
             }
-            System.out.println("Game Over");
-            guesses = 0;
-            System.out.println("Do you want to play again? yes or no?");
-            play = sc.next();
-            if(!play.equals("yes")){
-                break;
-            }
+        } catch (Exception e){
+            System.out.println("Please try again and enter number from 1 - 20");
         }
     }
 }
